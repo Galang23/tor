@@ -17,8 +17,8 @@ jobs:
     - name: Create release folder
       run: mkdir /home/runner/release 
     - uses: actions/checkout@v2
-    - name: Autoheader
-      run: autoheader && ls -lah
+    - name: Autogen
+      run: ./autogen.sh && ls -lah
     - name: configure
       run: ./configure --prefix=/home/runner/release
     - name: make
