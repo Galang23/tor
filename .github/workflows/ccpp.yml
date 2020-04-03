@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Install libevent dan ZLib
-      run: sudo apt-get update && sudo apt-get install libevent libevent-dev zlib1g zlib1g-dev
+      run: sudo apt-get update && sudo apt-get install libevent-2.1.6 libevent-dev zlib1g zlib1g-dev
     - uses: actions/checkout@v2
     - name: configure
       run: ./configure --prefix=/home/runner/release
