@@ -18,7 +18,7 @@ jobs:
       run: mkdir /home/runner/release 
     - uses: actions/checkout@v2
     - name: Autoheader
-      run: autoheader
+      run: autoheader && ls -lah
     - name: configure
       run: ./configure --prefix=/home/runner/release
     - name: make
