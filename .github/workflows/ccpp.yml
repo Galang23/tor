@@ -1,0 +1,35 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install libevent dan ZLib
+      run: sudo apt-get update && sudo apt-get install libevent libevent-dev zlib1g zlib1g-dev
+    - uses: actions/checkout@v2
+    - name: configure
+      run: ./configure --prefix=/home/runner/release
+    - name: make
+      run: make
+    - name: make check
+      run: make check
+    - name: make distcheck
+      run: make distcheck
+    - name: make install
+      run: make install
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+       # Artifact name
+        name: Build Artifact
+        # Directory containing files to upload
+        path: /home/runner/release
+      
